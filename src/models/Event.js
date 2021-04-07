@@ -29,7 +29,8 @@ const Event = sequelize.define('Event',{
 });
 
 Event.associate = function(models) {
-    Event.belongsToMany(models.User,{through:'UserEvent'});
+    Event.belongsToMany(models.User,{through:'UserEvent'});//N-N
+    Event.belongsTo(models.Location);//1-N
 }
 
 module.exports = Event;

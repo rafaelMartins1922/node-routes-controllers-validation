@@ -1,9 +1,10 @@
-const { response } = require('express');
 const Event = require('../models/Event');
+const {validationResult} = require('express-validator');
 
 class EventController {
     async create(req,res) {
         try{
+            validationResult(req).throw();
             const event = await Event.create(req.body);
             return res.status(201).json({message: 'Event created successfully!',event:event});
         }catch(err){
@@ -32,6 +33,7 @@ class EventController {
 
     async update(req,res) {
         try{
+            validationResult(req).throw();
             const {id} = req.params;
             console.log(id);
             console.log(req.body);

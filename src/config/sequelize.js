@@ -21,6 +21,8 @@ module.exports = sequelize;
 
 require('../models/User');
 require('../models/Event');
+require('../models/Location');
+require('../models/Cellphone');
 
 for (mod in sequelize.models) {
   if (sequelize.models[mod].associate instanceof Function) {

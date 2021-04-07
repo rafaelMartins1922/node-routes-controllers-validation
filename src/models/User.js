@@ -34,7 +34,8 @@ const User = sequelize.define('User', {
 );
 
 User.associate = function(models) {
-    User.belongsToMany(models.Event,{through:'UserEvent'});
+    User.belongsToMany(models.Event,{through:'UserEvent'});//N-N
+    User.hasOne(models.Cellphone,{through:'UserEvent'});//1-1
 }
 
 module.exports = User;
